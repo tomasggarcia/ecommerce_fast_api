@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from typing import List
 from models import User,Role
+from uuid import UUID, uuid4
 
 user = APIRouter()
 
@@ -27,4 +28,12 @@ def fetch_users():
 @user.post('/api/v1/users')
 def register_user(user: User):
     db.append(user)
-    return {"user": db}
+    return db
+
+
+@user.delete('api/v1/users/{user_id}')
+def remove_user(user_id: UUID):
+    for user in db:
+        if user.id == user_id:
+            db.remove(user)
+            return
