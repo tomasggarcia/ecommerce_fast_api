@@ -9,3 +9,7 @@
 ## Run 
  - uvicorn main:app --reload
 
+
+## Swagger
+
+ route: /localhost:8000/docs

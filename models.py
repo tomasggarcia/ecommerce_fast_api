@@ -8,8 +8,7 @@ class Role(str, Enum):
     user = 'user'
 
 class User(BaseModel):
-    id: Optional[UUID] = uuid4
-    email: str
+    id: Optional[UUID] = uuid4()
     role: List[Role]
     first_name: str
     last_name: str
